@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    ddl-auto: create-drop
+    initialization-mode: always
+    url: jdbc:mysql://localhost:3306/mochi_logs
+    username: user
+    password: password
+    driverClassName=org: com.mysql.jdbc.Driver
+
+logging:
+  level:
+    org.jooq.tools.LoggerListener: DEBUG
+    com.practical.springboot.service: DEBUG
+
+server:
+  port: 9002

@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active:
+      - local
+  application:
+    name: parser-service
+
+server:
+  port: '8080'
