@@ -3,7 +3,6 @@ package com.paymaya.kalupi.parser.core;
 import com.paymaya.kalupi.parser.data.ParserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.time.Clock;
 
@@ -28,17 +27,26 @@ public class DefaultParserService implements ParserService{
         String logType = ((containsIgnoreCase(type, "commit")) ? "BadConfirm"
                 : (containsIgnoreCase(type, "cancel"))? "BadCancel"
                 : "BadReversal");
-        String fileName = strDate + "_" + MOCHI_STATE + logType;
-        LOG.debug("fileName:"+fileName);
+        String fileName = strDate + "_" + MOCHI_STATE + "_" + logType;
+        LOG.info("fileName:"+fileName);
     }
 
     @Override
     public void parseMochiCommit(String strDate, String mochiCommitLogName, String type) {
-        String logType = ((containsIgnoreCase(type, "commit")) ? "BadConfirm"
+        String logType = ((containsIgnoreCase(type, "confirm")) ? "BadConfirm"
                 : (containsIgnoreCase(type, "cancel"))? "BadCancel"
                 : "BadReversal");
-        String fileName = strDate + "_" + MOCHI_COMMITS + logType;
-        LOG.debug("fileName:"+fileName);
+        String fileName = strDate + "_" + MOCHI_COMMITS + "_" + logType;
+        LOG.info("fileName:"+fileName);
+    }
+
+    @Override
+    public void parseMochiLedger(String strDate, String mochiLedgerLogName, String type) {
+        String logType = ((containsIgnoreCase(type, "confirm")) ? "BadConfirm"
+                : (containsIgnoreCase(type, "cancel"))? "BadCancel"
+                : "BadReversal");
+        String fileName = strDate + "_" + MOCHI_LEDGER + "_" + logType;
+        LOG.info("fileName:"+fileName);
     }
 
     public static boolean containsIgnoreCase(String str, String subString) {

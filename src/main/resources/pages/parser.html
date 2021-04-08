@@ -6,7 +6,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -70,7 +70,7 @@ span.psw {
 
 <h2>Kalupi Parser</h2>
 
-<form action="http://localhost:9002/v1/parser/state/" method="get">
+<form action="http://localhost:9002/v1/parser/" method="get">
 
   <div class="container">
     
@@ -78,13 +78,22 @@ span.psw {
     <label for="logdate"><b>Log Date</b></label>
     <input type="text" placeholder="YYYYMMDD e.g. 20210210" name="logdate" required>
 
-
     <label for="logname"><b>Log Name</b></label>
-    <input type="text" placeholder="'mochi-commits' or 'mochi-state' or 'mochi-ledger'" name="logname" required>
+    <!--input type="text" placeholder="'mochi-commits' or 'mochi-state' or 'mochi-ledger'" name="logname" required-->
+      <select name="logname" required>
+        <option value="mochi-commits">mochi-commits</option>
+        <option value="mochi-state">mochi-state</option>
+        <option value="mochi-ledger">mochi-ledger</option>
+      </select>
 
     <label for="logtype"><b>Pod Name</b></label>
-    <input type="text" placeholder="'BadCofnrim' or 'BanCancel' or 'BadReversal'" name="logtype" required>
-        
+    <!--input type="text" placeholder="'BadCofnrim' or 'BanCancel' or 'BadReversal'" name="logtype" required-->
+      <select name="logtype" required>
+        <option value="BadCofnrim">BadCofnrim</option>
+        <option value="BanCancel">BanCancel</option>
+        <option value="BadReversal">BadReversal</option>
+      </select>
+
     <button type="submit">Process</button>
   </div>
 
